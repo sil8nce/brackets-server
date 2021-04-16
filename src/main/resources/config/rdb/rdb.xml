@@ -1,0 +1,381 @@
+<config>
+
+    <attributes>
+        <name>数据库配置</name>
+        <alias>数据库配置</alias>
+        <summary>数据库配置</summary>
+        <description>数据库配置</description>
+    </attributes>
+
+    <parametergroup control="MYSQL">
+        <attributes>
+            <name>MySql</name>
+            <alias>MySql</alias>
+            <summary>MySql数据库配置</summary>
+            <description>MySql数据库连接</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>MYSQL</datasourcetype>
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://%s:%p/%d?characterEncoding=UTF8</url>
+            <port>3306</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.rdb.mysql.MySqlConnectionFactory</factoryClass>
+        </attributes>
+        <parametergroup name="DEFAULT">
+            <parameter name="address" alias="主机" configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="端口" configable="Required" control="NumLabel" defv="3306">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="instance" configable="Required"  alias="实例" control="text" >
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名"  control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+        <parametergroup name="URL">
+            <parameter name="realUrl" alias="URL" configable="Required"  control="text" defv="jdbc:mysql://localhost:3306/test">
+                <type name="String">
+                </type>
+                <description>URL</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+    <parametergroup control="ORACLE">
+        <attributes>
+            <name>Oracle</name>
+            <alias>Oracle</alias>
+            <summary>Oracle数据库配置</summary>
+            <description>支持Oracle10g,11g,12c数据库连接</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>ORACLE</datasourcetype>
+            <driverClass>oracle.jdbc.driver.OracleDriver</driverClass>
+            <port>1521</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.rdb.oracle.OracleConnectionFactory</factoryClass>
+            <url>jdbc:oracle:thin:@//%s:%p/%d</url>
+        </attributes>
+        <parametergroup name="SERVICE_NAME" >
+            <parameter name="address" alias="主机"  configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="端口"  configable="Required"  control="NumLabel" defv="1521">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="instance" alias="服务名"  configable="Required"  control="text" defv="XE">
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+        <parametergroup name="SID">
+            <parameter name="address" alias="主机"  configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="端口"  configable="Required"  control="NumLabel" defv="1521">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="instance" alias="实例名"  configable="Required"  control="text" >
+                <type name="String">
+                </type>
+                <description>sId</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+        <parametergroup name="URL">
+            <parameter name="realUrl" alias="URL"  configable="Required"  control="text" defv="jdbc:oracle:thin:@//localhost:1521/XE">
+                <type name="String">
+                </type>
+                <description>URL</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="test" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+    <parametergroup control="HIVE">
+        <attributes>
+            <name>Hive</name>
+            <alias>Hive</alias>
+            <summary>Hive数据库配置</summary>
+            <description>Hive数据库连接</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>HIVE</datasourcetype>
+            <driverClass>org.apache.hive.jdbc.HiveDriver</driverClass>
+            <port>1521</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.rdb.hive.HiveConnectionFactory</factoryClass>
+            <url>jdbc:hive2://%s:%p/</url>
+        </attributes>
+        <parametergroup name="DEFAULT" >
+            <parameter name="address" alias="主机"  configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="端口"  configable="Required"  control="NumLabel" defv="10000">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="instance" alias="实例"  configable="Required"  control="text" >
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+        <parametergroup name="URL">
+            <parameter name="realUrl" alias="URL" configable="Required"  control="text" defv="jdbc:hive2://localhost:10000/default">
+                <type name="String">
+                </type>
+                <description>URL</description>
+            </parameter>
+            <parameter name="instance" alias="实例" control="text" >
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="text">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+    <parametergroup control="IMPALA">
+        <attributes>
+            <name>Impala</name>
+            <alias>Impala</alias>
+            <summary>Impala数据库配置</summary>
+            <description>Impala数据库连接</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>IMPALA</datasourcetype>
+            <driverClass>org.apache.hive.jdbc.HiveDriver</driverClass>
+            <port>21050</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.rdb.hive.HiveConnectionFactory</factoryClass>
+            <url>jdbc:hive2://%s:%p/;auth=noSasl</url>
+        </attributes>
+        <parametergroup name="DEFAULT">
+            <parameter name="address" alias="主机"  configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="端口"  configable="Required"  control="NumLabel" defv="21050">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="instance" alias="实例"  configable="Required"  control="text" >
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+    <parametergroup control="SPARKSQL">
+        <attributes>
+            <name>SparkSQL</name>
+            <alias>SparkSQL</alias>
+            <summary>SparkSQL数据库配置</summary>
+            <description>SparkSQL数据库连接</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>SPARKSQL</datasourcetype>
+            <driverClass>org.apache.hive.jdbc.HiveDriver</driverClass>
+            <port>10000</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.rdb.hive.HiveConnectionFactory</factoryClass>
+            <url>jdbc:hive2://%s:%p/</url>
+        </attributes>
+        <parametergroup name="DEFAULT" >
+            <parameter name="address" alias="主机"  configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="端口"  configable="Required"  control="NumLabel" defv="10000">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="instance" alias="实例"  configable="Required"  control="text" >
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+        <parametergroup name="URL">
+            <parameter name="realUrl" alias="URL" configable="Required"  control="text" defv="jdbc:hive2://localhost:10000/default">
+                <type name="String">
+                </type>
+                <description>URL</description>
+            </parameter>
+            <parameter name="instance" alias="实例" control="text" >
+                <type name="String">
+                </type>
+                <description>实例</description>
+            </parameter>
+            <parameter name="userName" alias="用户名" control="test">
+                <type name="String">
+                </type>
+                <description>用户名</description>
+            </parameter>
+            <parameter name="password" alias="密码" control="Password" >
+                <type name="String">
+                </type>
+                <description>密码</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+    <parametergroup control="ELASTICSEARCH">
+        <attributes>
+            <name>Elasticsearch</name>
+            <alias>Elasticsearch</alias>
+            <summary>Elasticsearch数据源</summary>
+            <description>Elasticsearch数据源</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>ELASTICSEARCH</datasourcetype>
+            <port>9300</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.es.ESConnectionFactory</factoryClass>
+            <url>jdbc:elasticsearch://%s:%p/%d</url>
+        </attributes>
+        <parametergroup name="DEFAULT" >
+            <parameter name="address" alias="ES地址"  configable="Required"  control="text" defv="localhost">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+            <parameter name="port" alias="ES端口"  configable="Required"  control="NumLabel" defv="9200">
+                <type name="String">
+                </type>
+                <description>端口</description>
+            </parameter>
+            <parameter name="clusterName" alias="ES集群名称"  configable="Required"  control="text" >
+                <type name="String">
+                </type>
+                <description>elasticsearch</description>
+            </parameter>
+            <parameter name="instance" alias="ES索引" control="text" >
+                <type name="String">
+                </type>
+                <description>topic</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+    <parametergroup control="KAFKA">
+        <attributes>
+            <name>Kafka</name>
+            <alias>Kafka</alias>
+            <summary>Kafka数据源</summary>
+            <description>Kafka数据源</description>
+            <storagetype>DATABASE</storagetype>
+            <datasourcetype>KAFKA</datasourcetype>
+            <port>2181</port>
+            <factoryClass>com.topsec.ti.pensieve.storage.kafka.KafkaConnectionFactory</factoryClass>
+        </attributes>
+        <parametergroup name="DEFAULT" >
+            <parameter name="connectionString" alias="zookeeper主机"  configable="Required"  control="text" defv="localhost:2181">
+                <type name="String">
+                </type>
+                <description>地址</description>
+            </parameter>
+        </parametergroup>
+    </parametergroup>
+
+</config>

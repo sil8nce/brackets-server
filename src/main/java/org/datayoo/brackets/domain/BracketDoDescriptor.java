@@ -9,7 +9,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "BRK_DO_DESCRIPTOR",
-    indexes = { @Index(name = "IDX_BRK_DOD_URL", columnList = "URL"),
+    indexes = {@Index(name = "IDX_BRK_DO_DESCRIPTOR", columnList = "RES_ID")
+    // @Index(name = "IDX_BRK_DOD_URL", columnList = "URL"),
     })
 @Inheritance(strategy = InheritanceType.JOINED)
 public class BracketDoDescriptor extends PropResource {

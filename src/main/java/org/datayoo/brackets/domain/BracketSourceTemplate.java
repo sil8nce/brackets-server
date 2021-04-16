@@ -1,5 +1,7 @@
 package org.datayoo.brackets.domain;
 
+import org.datayoo.domain.core.Resource;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,9 +13,9 @@ import java.io.Serializable;
     indexes = { @Index(name = "IDX_BRK_SOURCE_ID", columnList = "RES_ID"),
     })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class BracketSourceTemplate implements Serializable {
+public class BracketSourceTemplate extends Resource {
 
-  @Id
+  //@Id
   @Column(name = "SRC_TYPE", length = 64)
   protected String sourceType;
 
